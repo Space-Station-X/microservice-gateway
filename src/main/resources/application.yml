@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: microservice-gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: microservice-sales
+          uri: lb://microservice-sales
+          predicates:
+            - Path=/api/v1/ventas/**
+        - id: microservice-product
+          uri: lb://microservice-product
+          predicates:
+            - Path=/api/v1/videojuegos/**
+        - id : microservice-users
+          uri: lb://microservice-users
+          predicates:
+            - Path=/api/v1/user/**
+        - id: microservice-security
+          uri: lb://microservice-security
+          predicates:
+            - Path=/auth/**
+        - id: microservice-client
+          uri: lb://microservice-client
+          predicates:
+            - Path=/client/**
