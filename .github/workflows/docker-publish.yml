@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      EUREKA_SERVER: ${{ secrets.EUREKA_SERVER }}
 
     steps:
       - name: Checkout repository
@@ -33,3 +35,13 @@ jobs:
 
       - name: Push Docker image
         run: docker push raydberg25/microservice-gateway:0.0.1-SNAPSHOT
+
+      - name: Install Koyeb CLI
+        run: |
+          curl -sSL https://koyeb.com/install.sh | sh
+          echo "${HOME}/.koyeb/bin" >> $GITHUB_PATH
+
+      - name: Redeploy service on Koyeb
+        run: koyeb service redeploy gateway/microservice-gateway --token $KOYEB_API_TOKEN
+        env:
+          KOYEB_API_TOKEN: ${{ secrets.KOYEB_API_TOKEN }}
