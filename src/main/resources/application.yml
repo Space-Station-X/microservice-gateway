@@ -12,7 +12,9 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOriginPatterns: "http://localhost:4200"
+            allowedOriginPatterns:
+              - "http://localhost:4200"
+              - "https://backendfinal-ddc44.web.app"
             allowedMethods:
               - GET
               - POST
