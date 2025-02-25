@@ -40,12 +40,13 @@ spring:
           predicates:
             - Path=/api/v1/user/**
 
-        - id: microservice-product-swagger
+        - id: microservice-users-swagger
           uri: lb://microservice-users
           predicates:
-            - Path=/microservice-users/swagger-ui.html, /microservice-users/swagger-ui/**
+            - Path=/microservice-users/swagger-ui.html
+            - Path=/microservice-users/swagger-ui/**
           filters:
-            - RewritePath=/microservice-users/(?<segment>.*), /$\{segment}
+            - RewritePath=/microservice-users/(?<segment>.*), /${segment}
 
 
         - id: microservice-security
