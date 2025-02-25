@@ -32,10 +32,22 @@ spring:
           uri: lb://microservice-product
           predicates:
             - Path=/api/v1/videojuegos/**
-        - id: microservice-users
+
+
+
+        - id: microservice-users-api
           uri: lb://microservice-users
           predicates:
             - Path=/api/v1/user/**
+
+        - id: microservice-product-swagger
+          uri: lb://microservice-users
+          predicates:
+            - Path=/microservice-users/swagger-ui.html, /microservice-users/swagger-ui/**
+          filters:
+            - RewritePath=/microservice-users/(?<segment>.*), /$\{segment}
+
+
         - id: microservice-security
           uri: lb://microservice-security
           predicates:
