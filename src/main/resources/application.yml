@@ -15,6 +15,7 @@ spring:
             allowedOriginPatterns:
               - "http://localhost:4200"
               - "https://polvosazules-b2d7f.web.app"
+              - "https://polvosazules-b2d7f.web.app"
             allowedMethods:
               - GET
               - POST
