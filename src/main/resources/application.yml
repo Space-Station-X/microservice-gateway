@@ -14,7 +14,7 @@ spring:
           '[/**]':
             allowedOriginPatterns:
               - "http://localhost:4200"
-              - "https://backendfinal-ddc44.web.app"
+              - "https://polvosazules-b2d7f.web.app"
             allowedMethods:
               - GET
               - POST
